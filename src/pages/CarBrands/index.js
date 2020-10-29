@@ -1,33 +1,37 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { Container, WrapperCards, BrandCard } from './styles';
 
-import BMW from '../../assets/images/bmw-logo.png';
+import api from '../../services/api';
 
 function CarBrands() {
+  const [cars, setCars] = useState([]);
+
+  useEffect(() => {
+    async function loadCars() {
+      const response = await api.get('carros/marcas');
+
+      const brands = response.data;
+
+      setCars(brands);
+    }
+
+    loadCars();
+  }, []);
+
   return (
     <Container>
-        <h2>Marcas disponíveis</h2>
+      <h2>Marcas disponíveis</h2>
       <WrapperCards>
-        <BrandCard>
-          <span>BMW</span>
-          <img src={BMW} alt=""/>
-        </BrandCard>
-        <BrandCard>
-          <span>Audi</span>
-          <img src="" alt=""/>
-        </BrandCard>
-        <BrandCard>
-          <span>Ford</span>
-          <img src="" alt=""/>
-        </BrandCard>
-        <BrandCard>
-          <span>Fiat</span>
-          <img src="" alt=""/>
-        </BrandCard>
+        {cars.map((car) => (
+          <BrandCard key={car.codigo}>
+            <span>{car.nome}</span>
+          </BrandCard>
+        ))}
       </WrapperCards>
+
     </Container>
-    );
+  );
 }
 
 export default CarBrands;

@@ -5,31 +5,36 @@ export const Container = styled.section`
   min-height: 100vh;
   background: #edf7fe;
   padding: 20px;
+
+  h2 {
+    color: #646464;
+    padding-bottom: 28px;
+    border-bottom: 1px solid #d3d3d3;
+  }
 `;
 
 export const WrapperCards = styled.div`
-  display: flex;
-  margin: 20px 40px;
+  margin: 32px;
+  justify-items: center;
+  display: grid;
+  grid-gap: 30px 8px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 `;
 
 export const BrandCard = styled.div`
   display: flex;
   flex-direction: column;
-  height: 240px;
-  width: 200px;
+  width: 250px;
+  height: 250px;
   background: #fff;
-  border-radius: 8px;
+  border-radius: 4px;
   box-shadow: 0px 2px 4px 2px rgba(0,0,0,0.1);
-  margin-right: 16px;
-  align-items: center;
-  justify-content: space-around;
+  justify-content: center;
 
   span {
+    text-align: center;
+    font-size: 32px;
     color: #2e2e2e;
-  }
-
-  img {
-    width: 90%;
   }
 
   &:hover {

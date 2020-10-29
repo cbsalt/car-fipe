@@ -2,15 +2,19 @@ import React from 'react';
 
 import { Container, WrapperCard } from './styles';
 
-import BMW from '../../assets/images/bmw-car.png'
+import BMW from '../../assets/images/bmw-car.png';
 
 function CarData() {
   return (
     <Container>
-      <img src={BMW} alt=""/>
-        <WrapperCard>
-          <h2>BMW{' '}<span>XR3</span></h2>
-          <p>1.7 LX 16V Gasolina 4P Manual</p>
+      <img src={BMW} alt="" />
+      <WrapperCard>
+        <h2>
+          BMW
+          {' '}
+          <span>XR3</span>
+        </h2>
+        <p>1.7 LX 16V Gasolina 4P Manual</p>
         <div className="description">
           <div>
             <small>Ano</small>
