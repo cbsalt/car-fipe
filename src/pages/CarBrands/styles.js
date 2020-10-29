@@ -11,30 +11,36 @@ export const Container = styled.section`
     padding-bottom: 28px;
     border-bottom: 1px solid #d3d3d3;
   }
+
+  a {
+    text-decoration: none;
+  }
 `;
 
 export const WrapperCards = styled.div`
   margin: 32px;
   justify-items: center;
   display: grid;
-  grid-gap: 30px 8px;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-gap: 16px 8px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
 `;
 
 export const BrandCard = styled.div`
   display: flex;
   flex-direction: column;
-  width: 250px;
-  height: 250px;
+  width: 180px;
+  height: 180px;
   background: #fff;
   border-radius: 4px;
   box-shadow: 0px 2px 4px 2px rgba(0,0,0,0.1);
   justify-content: center;
+  padding: 0 15px;
 
   span {
     text-align: center;
-    font-size: 32px;
+    font-size: 20px;
     color: #2e2e2e;
+    text-transform: uppercase;
   }
 
   &:hover {

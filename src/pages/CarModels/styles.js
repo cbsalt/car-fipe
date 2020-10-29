@@ -5,32 +5,30 @@ export const Container = styled.div`
   min-height: 100vh;
   background: #edf7fe;
   padding: 20px;
+
+  h2 {
+    padding: 0 32px;
+  }
 `;
 
 export const WrapperCards = styled.div`
+  margin: 32px;
+  justify-items: center;
   display: flex;
-  margin: 20px 40px;
+  flex-direction: column;
 `;
 
 export const ModelCard = styled.div`
   display: flex;
   flex-direction: column;
-  width: 300px;
+  margin-bottom: 12px;
   background: #fff;
   border-radius: 8px;
   box-shadow: 0px 2px 4px 2px rgba(0,0,0,0.1);
-  margin-right: 16px;
   justify-content: space-around;
-
-  img {
-    align-self: center;
-    width: 90%;
-  }
-
-  div {
-    padding: 0 12px;
-    line-height: 2.4;
-    color: #2e2e2e;
+  padding: 0 12px;
+  line-height: 2.4;
+  color: #2e2e2e;
 
     strong {
       font-size: 22px;
@@ -38,24 +36,8 @@ export const ModelCard = styled.div`
       font-weight: 400;
     }
 
-    p {
-      font-size: 12px;
-    }
-
-    span {
-      font-size: 16px;
-    }
-
-    .year {
-      padding: 0;
-      display: flex;
-      justify-content: space-between;
-      font-size: 12px;
-    }
-  }
-
   &:hover {
-    transform: scale(1.04);
+    transform: scale(1.01);
     transition: 0.4s;
     cursor: pointer;
   }

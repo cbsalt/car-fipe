@@ -1,32 +1,40 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import { Container, WrapperCards, BrandCard } from './styles';
 
 import api from '../../services/api';
 
 function CarBrands() {
-  const [cars, setCars] = useState([]);
+  const [brands, setBrands] = useState([]);
 
   useEffect(() => {
-    async function loadCars() {
+    async function LoadBrands() {
       const response = await api.get('carros/marcas');
 
-      const brands = response.data;
+      const carBrands = response.data;
 
-      setCars(brands);
+      setBrands(carBrands);
     }
 
-    loadCars();
+    LoadBrands();
   }, []);
 
   return (
     <Container>
-      <h2>Marcas disponíveis</h2>
+      <h2>Marcas de a-z</h2>
       <WrapperCards>
-        {cars.map((car) => (
-          <BrandCard key={car.codigo}>
-            <span>{car.nome}</span>
-          </BrandCard>
+        {brands.map((brand) => (
+          <Link
+            key={brand.codigo}
+            to={{
+              pathname: `/models/${brand.codigo}`,
+            }}
+          >
+            <BrandCard>
+              <span>{brand.nome}</span>
+            </BrandCard>
+          </Link>
         ))}
       </WrapperCards>
 

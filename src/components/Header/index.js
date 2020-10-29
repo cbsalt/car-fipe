@@ -8,7 +8,8 @@ export default function Header() {
   return (
     <Container>
       <img src={logo} alt="" />
-      <strong>Carros selecionados</strong>
+      <input type="text" placeholder="O que você busca?" />
+      <h3>Carros selecionados</h3>
     </Container>
   );
 }

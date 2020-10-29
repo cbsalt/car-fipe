@@ -1,26 +1,38 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { Container, WrapperCards, ModelCard } from './styles';
 
-import BMW from '../../assets/images/bmw-car.png';
+import api from '../../services/api';
 
-function CarModels() {
+function CarModels({ match }) {
+  const [models, setModels] = useState([]);
+
+  useEffect(() => {
+    async function LoadModels() {
+      const { id } = match.params;
+
+      const response = await api.get(`carros/marcas/${id}/modelos`);
+
+      const carModels = response.data.modelos;
+      console.log(carModels);
+
+      setModels(carModels);
+    }
+
+    LoadModels();
+  }, []);
+
   return (
     <Container>
       <h2>Modelos disponíveis</h2>
       <WrapperCards>
-        <ModelCard>
-          <img src={BMW} alt="" />
-          <div>
-            <strong>XR3</strong>
-            <p>1.7 LX 16V Gasolina 4P Manual</p>
-            <span>R$ 13.000</span>
-            <div className="year">
-              <small>2001/2001</small>
-              <small>161446 km</small>
+        {models.map((model) => (
+          <ModelCard key={model.codigo}>
+            <div>
+              <strong>{model.nome}</strong>
             </div>
-          </div>
-        </ModelCard>
+          </ModelCard>
+        ))}
       </WrapperCards>
     </Container>
   );
