@@ -4,17 +4,30 @@ export const Container = styled.div`
   height: 100%;
   min-height: 100vh;
   background: #edf7fe;
-  padding: 20px;
+  padding: 32px 48px;
 
   h2 {
-    padding: 0 32px;
+    color: #646464;
+    padding-bottom: 32px;
+    border-bottom: 1px solid #d3d3d3;
+  }
+
+  a {
+    text-decoration: none;
   }
 `;
 
-export const WrapperCards = styled.div`
-  margin: 32px;
+export const WrapperModelsCards = styled.div`
+  margin-top: 32px;
   justify-items: center;
-  display: flex;
+  display: ${(props) => (props.selected ? 'none' : 'flex')};
+  flex-direction: column;
+`;
+
+export const WrapperYearsCards = styled.div`
+  margin-top: 32px;
+  justify-items: center;
+  display: ${(props) => (props.selected ? 'flex' : 'none')};
   flex-direction: column;
 `;
 

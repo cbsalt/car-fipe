@@ -1,15 +1,16 @@
 import React from 'react';
 
-import logo from '../../assets/images/market-logo.png';
+import logo from '../../assets/images/car-logo.svg';
 
 import { Container } from './styles';
 
 export default function Header() {
   return (
     <Container>
-      <img src={logo} alt="" />
-      <input type="text" placeholder="O que você busca?" />
-      <h3>Carros selecionados</h3>
+      <a href="/">
+        <img src={logo} alt="logotipo" />
+      </a>
+      <h3>Carros desejados</h3>
     </Container>
   );
 }

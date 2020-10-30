@@ -1,39 +1,63 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useCallback, useState } from 'react';
 
-import { Container, WrapperCards, ModelCard } from './styles';
+import {
+  Container, WrapperModelsCards, WrapperYearsCards, ModelCard,
+} from './styles';
 
 import api from '../../services/api';
 
 function CarModels({ match }) {
+  const [years, setYears] = useState([]);
   const [models, setModels] = useState([]);
+  const [modelSelected, setModelSelected] = useState(null);
+  const brandId = match.params.id;
 
   useEffect(() => {
     async function LoadModels() {
-      const { id } = match.params;
+      const response = await api.get(`marcas/${brandId}/modelos`);
+      const { modelos, anos } = response.data;
 
-      const response = await api.get(`carros/marcas/${id}/modelos`);
-
-      const carModels = response.data.modelos;
-      console.log(carModels);
-
-      setModels(carModels);
+      setModels(modelos);
+      setYears(anos);
     }
 
     LoadModels();
   }, []);
 
+  const handleModel = useCallback((model) => {
+    setModelSelected(model);
+  }, []);
+
   return (
     <Container>
       <h2>Modelos disponíveis</h2>
-      <WrapperCards>
+      <WrapperModelsCards selected={modelSelected}>
         {models.map((model) => (
-          <ModelCard key={model.codigo}>
+          <ModelCard key={model.codigo} onClick={() => handleModel(model.codigo)}>
             <div>
               <strong>{model.nome}</strong>
             </div>
           </ModelCard>
         ))}
-      </WrapperCards>
+      </WrapperModelsCards>
+
+      <WrapperYearsCards selected={modelSelected}>
+        {years.map((year) => (
+          <a
+            key={year.codigo}
+            href={
+               `/car/${brandId}/${modelSelected}/${year.codigo}`
+            }
+          >
+            <ModelCard key={year.codigo}>
+              <div>
+                <strong>{year.nome}</strong>
+              </div>
+            </ModelCard>
+          </a>
+        ))}
+      </WrapperYearsCards>
+
     </Container>
   );
 }

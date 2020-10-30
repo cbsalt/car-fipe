@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 
 import { Container, WrapperCards, BrandCard } from './styles';
 
@@ -10,7 +9,7 @@ function CarBrands() {
 
   useEffect(() => {
     async function LoadBrands() {
-      const response = await api.get('carros/marcas');
+      const response = await api.get('marcas');
 
       const carBrands = response.data;
 
@@ -25,19 +24,16 @@ function CarBrands() {
       <h2>Marcas de a-z</h2>
       <WrapperCards>
         {brands.map((brand) => (
-          <Link
+          <a
             key={brand.codigo}
-            to={{
-              pathname: `/models/${brand.codigo}`,
-            }}
+            href={`/models/${brand.codigo}`}
           >
             <BrandCard>
               <span>{brand.nome}</span>
             </BrandCard>
-          </Link>
+          </a>
         ))}
       </WrapperCards>
-
     </Container>
   );
 }

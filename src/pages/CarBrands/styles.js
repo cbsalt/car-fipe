@@ -4,11 +4,11 @@ export const Container = styled.section`
   height: 100%;
   min-height: 100vh;
   background: #edf7fe;
-  padding: 20px;
+  padding: 32px 48px;
 
   h2 {
     color: #646464;
-    padding-bottom: 28px;
+    padding-bottom: 32px;
     border-bottom: 1px solid #d3d3d3;
   }
 
@@ -18,10 +18,10 @@ export const Container = styled.section`
 `;
 
 export const WrapperCards = styled.div`
-  margin: 32px;
+  margin-top: 32px;
   justify-items: center;
   display: grid;
-  grid-gap: 16px 8px;
+  grid-gap: 20px;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
 `;
 
