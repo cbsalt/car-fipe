@@ -23,7 +23,7 @@ function CarModels({ match }) {
     }
 
     LoadModels();
-  }, []);
+  }, [brandId]);
 
   const handleModel = useCallback((model) => {
     setModelSelected(model);

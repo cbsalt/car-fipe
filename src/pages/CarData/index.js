@@ -36,7 +36,7 @@ function CarData({ match }) {
     }
 
     LoadDetails();
-  }, []);
+  }, [match.params]);
 
   function handleAddCar(data) {
     dispatch(CartActions.addToCartRequest(data));
