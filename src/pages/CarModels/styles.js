@@ -51,7 +51,12 @@ export const ModelCard = styled.div`
 
   &:hover {
     transform: scale(1.01);
-    transition: 0.4s;
+    transition: 0.6s;
     cursor: pointer;
+    background: #483d8b;
+
+    strong {
+      color: #fff;
+    }
   }
 `;

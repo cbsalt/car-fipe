@@ -1,4 +1,5 @@
 import React, { useEffect, useCallback, useState } from 'react';
+import PropTypes from 'prop-types';
 
 import {
   Container, WrapperModelsCards, WrapperYearsCards, ModelCard,
@@ -40,7 +41,6 @@ function CarModels({ match }) {
           </ModelCard>
         ))}
       </WrapperModelsCards>
-
       <WrapperYearsCards selected={modelSelected}>
         {years.map((year) => (
           <a
@@ -57,9 +57,12 @@ function CarModels({ match }) {
           </a>
         ))}
       </WrapperYearsCards>
-
     </Container>
   );
 }
 
 export default CarModels;
+
+CarModels.propTypes = {
+  match: PropTypes.instanceOf(Object).isRequired,
+};

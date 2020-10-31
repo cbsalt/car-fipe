@@ -6,10 +6,6 @@ export const Container = styled.div`
   background: #edf7fe;
   padding: 52px;
   text-align: center;
-
-  img {
-    width: 40%;
-  }
 `;
 
 export const WrapperCard = styled.div`
@@ -17,6 +13,7 @@ export const WrapperCard = styled.div`
   padding: 32px;
   border-radius: 8px;
   text-align: left;
+  margin-bottom: 20px;
 
   div {
     display: grid;
@@ -28,7 +25,7 @@ export const WrapperCard = styled.div`
    }
 
    button {
-    background: #00bfff;
+    background: #f64c75;
     border: none;
     border-radius: 8px;
     color: #fff;

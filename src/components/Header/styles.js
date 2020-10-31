@@ -18,6 +18,7 @@ export const Container = styled.div`
 
   a {
     display: contents;
+    text-decoration: none;
   }
 
   h3 {

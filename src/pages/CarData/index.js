@@ -1,16 +1,23 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import Loader from 'react-loader-spinner';
+import Swal from 'sweetalert2';
+import PropTypes from 'prop-types';
+
+import api from '../../services/api';
 
 import { Container, WrapperCard } from './styles';
 
 import error404 from '../../assets/images/404-error.svg';
 
-import api from '../../services/api';
+import * as CartActions from '../../store/modules/cart/actions';
 
 function CarData({ match }) {
   const [carDetail, setCarDetail] = useState(false);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     async function LoadDetails() {
@@ -21,7 +28,7 @@ function CarData({ match }) {
         const response = await api.get(`marcas/${brandid}/modelos/${modelid}/anos/${year}`);
 
         setCarDetail(response.data);
-      } catch (error) {
+      } catch (err) {
         setError(true);
       } finally {
         setLoading(false);
@@ -31,9 +38,30 @@ function CarData({ match }) {
     LoadDetails();
   }, []);
 
+  function handleAddCar(data) {
+    dispatch(CartActions.addToCartRequest(data));
+
+    let timerInterval;
+    Swal.fire({
+      title: 'Adicionado com sucesso',
+      timer: 3000,
+      timerProgressBar: true,
+      confirmButtonColor: '#32be8f',
+
+      willClose: () => {
+        clearInterval(timerInterval);
+      },
+    }).then((result) => {
+      /* Read more about handling dismissals below */
+      if (result.dismiss === Swal.DismissReason.timer) {
+        console.log('I was closed by the timer');
+      }
+    });
+  }
+
   return (
     <Container>
-      {loading && <Loader type="Oval" color="#87cefa" height={300} width={300} />}
+      {loading && <Loader type="ThreeDots" color="#483d8b" height={80} width={80} />}
 
       {error && <img src={error404} alt="404 not found" />}
 
@@ -43,7 +71,12 @@ function CarData({ match }) {
             <h2>
               {carDetail.Marca}
             </h2>
-            <button type="button">Adicionar aos carros desejados</button>
+            <button
+              type="button"
+              onClick={() => handleAddCar(carDetail)}
+            >
+              Adicionar aos carros desejados
+            </button>
             <p>{carDetail.Modelo}</p>
           </div>
           <div className="description">
@@ -75,3 +108,7 @@ function CarData({ match }) {
 }
 
 export default CarData;
+
+CarData.propTypes = {
+  match: PropTypes.instanceOf(Object).isRequired,
+};
