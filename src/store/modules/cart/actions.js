@@ -15,6 +15,6 @@ export function addToCartSuccess(data) {
 export function removeFromCart(id) {
   return {
     type: '@cart/REMOVE',
-    payload: { id },
+    id,
   };
 }

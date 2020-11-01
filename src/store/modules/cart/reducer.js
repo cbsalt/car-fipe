@@ -9,11 +9,14 @@ export default function cart(state = { favoriteCars: [] }, action) {
 
       case '@cart/REMOVE':
         {
-          const favoriteIndex = draft.favoriteCars.findIndex((fav) => fav.id === action.payload.id);
+          const favoriteIndex = draft.favoriteCars.findIndex(
+            (fav) => fav.id === action.id,
+          );
 
           if (favoriteIndex >= 0) {
             draft.favoriteCars.splice(favoriteIndex, 1);
-          } }
+          }
+        }
         break;
       default:
     }
