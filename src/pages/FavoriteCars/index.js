@@ -46,7 +46,7 @@ function FavoriteCars() {
   return (
     <Container>
       {favorites.map((favorite) => (
-        <WrapperCard key={favorite.CodigoFipe}>
+        <WrapperCard key={favorite.id}>
           <div>
             <h2>
               {favorite.Marca}

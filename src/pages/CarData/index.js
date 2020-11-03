@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
 import Loader from 'react-loader-spinner';
 import Swal from 'sweetalert2';
 import PropTypes from 'prop-types';
@@ -39,7 +40,11 @@ function CarData({ match }) {
   }, [match.params]);
 
   function handleAddCar(data) {
-    dispatch(CartActions.addToCartRequest(data));
+    const car = {
+      ...data,
+      id: uuidv4(),
+    };
+    dispatch(CartActions.addToCartRequest(car));
 
     let timerInterval;
     Swal.fire({
