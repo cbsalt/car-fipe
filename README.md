@@ -1,6 +1,6 @@
 # <h1 align="center">Celebritys FIPE :oncoming_automobile: :mag:</h1>
 ## Project description
-Find out how much your car is worth or how much the car you would like to get. This repository uses the updated FIPE table to consult vehicle prices according to the make, model and year of the vehicle. You can bookmark it to keep up with changing prices.
+Find out how much your car or the car you would like to have is costing. This repository uses the updated FIPE table to consult vehicle prices according to the brand, model and year of the vehicle. You can bookmark it to keep up with changing prices.
 
 # :computer: Built With
 _This project was developed with the following technologies:_
