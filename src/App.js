@@ -6,6 +6,7 @@ import Routes from './routes';
 
 import GlobalStyles from './styles/global';
 import Header from './components/Header';
+import Footer from './components/Footer';
 import history from './services/history';
 import { store, persistor } from './store';
 
@@ -17,6 +18,7 @@ function App() {
           <Header />
           <Routes />
           <GlobalStyles />
+          <Footer />
         </Router>
       </PersistGate>
     </Provider>

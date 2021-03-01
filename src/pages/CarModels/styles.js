@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const Container = styled.div`
   height: 100%;
   min-height: 100vh;
-  background: #edf7fe;
   padding: 32px 48px;
 
   h2 {
@@ -14,6 +13,10 @@ export const Container = styled.div`
 
   a {
     text-decoration: none;
+  }
+
+  @media (max-width: 640px) {
+    padding: 32px 28px;
   }
 `;
 
@@ -35,9 +38,9 @@ export const ModelCard = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 12px;
-  background: #fff;
+  background: #f2f4f6;
   border-radius: 8px;
-  box-shadow: 0px 2px 4px 2px rgba(0,0,0,0.1);
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2);
   justify-content: space-around;
   padding: 0 12px;
   line-height: 2.4;
@@ -51,7 +54,7 @@ export const ModelCard = styled.div`
 
   &:hover {
     transform: scale(1.01);
-    transition: 0.6s;
+    transition: 0.2s;
     cursor: pointer;
     background: #483d8b;
 

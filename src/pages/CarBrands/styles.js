@@ -3,13 +3,10 @@ import styled from 'styled-components';
 export const Container = styled.section`
   height: 100%;
   min-height: 100vh;
-  background: #edf7fe;
   padding: 32px 48px;
 
   h2 {
     color: #646464;
-    padding-bottom: 32px;
-    border-bottom: 1px solid #d3d3d3;
   }
 
   a {
@@ -30,9 +27,9 @@ export const BrandCard = styled.div`
   flex-direction: column;
   width: 180px;
   height: 180px;
-  background: #fff;
+  background: #f2f4f6;
   border-radius: 4px;
-  box-shadow: 0px 2px 4px 2px rgba(0,0,0,0.1);
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2);
   justify-content: center;
   padding: 0 15px;
 
@@ -45,12 +42,17 @@ export const BrandCard = styled.div`
 
   &:hover {
     transform: scale(1.04);
-    transition: 0.6s;
+    transition: 0.4s;
     cursor: pointer;
-    background: #483d8b;
+    background: #2d248a;
 
     span {
       color: #fff;
     }
+  }
+
+  @media (max-width: 640px) {
+    width: 20rem;
+    height: 4rem;
   }
 `;

@@ -16,14 +16,28 @@ export const Container = styled.div`
     box-shadow: 0px 2px 4px 2px rgba(0,0,0,0.1);
   }
 
-  a {
-    display: contents;
-    text-decoration: none;
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   h3 {
-    font-size: 14px;
+    font-size: 0.8rem;
     color: #fff;
-    font-weight: 600;
+    font-weight: bold;
+  }
+
+  .count {
+    position: relative;
+  }
+
+  span {
+    color: #483d8b;
+    position: absolute;
+    top: 8px;
+    left: 13px;
+    font-size: 14px;
+    font-weight: bold;
   }
 `;

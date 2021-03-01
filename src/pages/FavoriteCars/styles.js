@@ -3,21 +3,67 @@ import styled from 'styled-components';
 export const Container = styled.div`
   height: 100%;
   min-height: 100vh;
-  background: #edf7fe;
   padding: 52px;
   text-align: center;
+
+  .empty-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    span {
+      font-size: 2rem;
+      color: #483d8b;
+      font-weight: bold;
+    }
+
+    img {
+      max-width: 80%;
+      align-self: center;
+      margin: 24px 0;
+    }
+
+    button {
+      grid-row-start: 2;
+      grid-column-start: 2;
+      width: 232px;
+      height: 42px;
+      background: #483d8b;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: bold;
+      justify-self: center;
+
+      &:hover {
+        transform: scale(1.04);
+        transition: 0.2s;
+      }
+    }
+
+    a {
+      color: #fff;
+    }
+
+    @media(max-width: 640px) {
+      span {
+        font-size: 1.5rem;
+      }
+    }
+  }
 `;
 
 export const WrapperCard = styled.div`
-  background: #fff;
+  background: #f2f4f6;
   padding: 32px;
   border-radius: 8px;
   text-align: left;
   margin-bottom: 20px;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2);
 
   div {
-    display: grid;
-    grid-template-columns: 1fr 0.2fr;
+    display: flex;
+    justify-content: space-between;
 
     h2 {
       font-size: 28px;
@@ -26,23 +72,24 @@ export const WrapperCard = styled.div`
 
    button {
     background: #f64c75;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
     border: none;
-    border-radius: 8px;
-    color: #fff;
-    font-size: 14px;
-    font-weight: 600;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2);
 
     &:hover {
     transform: scale(1.04);
-    transition: 0.6s;
+    transition: 0.2s;
     }
    }
+  }
 
-   p {
+   strong {
     color: #f00;
     font-weight: 600;
    }
-  }
 
 
   .description {
@@ -58,6 +105,9 @@ export const WrapperCard = styled.div`
 
     small {
       color: #878787;
+      display: flex;
+      align-items: center;
+      margin-bottom: 4px;
     }
 
     span {

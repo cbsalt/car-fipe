@@ -3,7 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 
+import { TiTrash } from 'react-icons/ti';
+import { BsCalendar } from 'react-icons/bs';
+import { FaGasPump, FaMoneyBillWaveAlt } from 'react-icons/fa';
 import { Container, WrapperCard } from './styles';
+import Empty from '../../assets/images/empty.svg';
 
 import * as CartActions from '../../store/modules/cart/actions';
 
@@ -45,6 +49,16 @@ function FavoriteCars() {
 
   return (
     <Container>
+      {favorites.length === 0 && (
+      <div className="empty-container">
+        <span>Parece que não há nada aqui ainda...</span>
+        <img src={Empty} alt="empty" />
+        <button type="button">
+          <a href="/">VOLTAR AO INÍCIO</a>
+        </button>
+      </div>
+      )}
+
       {favorites.map((favorite) => (
         <WrapperCard key={favorite.id}>
           <div>
@@ -55,25 +69,34 @@ function FavoriteCars() {
               type="button"
               onClick={() => handleRemoveCar(favorite.id)}
             >
-              Remover dos carros desejados
+              <TiTrash size={24} fill="#ffffff" />
             </button>
-            <p>{favorite.Modelo}</p>
           </div>
+          <strong>{favorite.Modelo}</strong>
           <div className="description">
             <div>
               <small>Ano</small>
               <span>{favorite.AnoModelo}</span>
             </div>
             <div>
-              <small>Mês de Referência</small>
+              <small>
+                <BsCalendar style={{ marginRight: '4px' }} />
+                Mês de Referência
+              </small>
               <span>{favorite.MesReferencia}</span>
             </div>
             <div>
-              <small>Valor</small>
+              <small>
+                <FaMoneyBillWaveAlt style={{ marginRight: '4px' }} />
+                Valor
+              </small>
               <span>{favorite.Valor}</span>
             </div>
             <div>
-              <small>Combustível</small>
+              <small>
+                <FaGasPump style={{ marginRight: '4px' }} />
+                Combustível
+              </small>
               <span>{favorite.Combustivel}</span>
             </div>
             <div>

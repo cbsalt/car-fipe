@@ -6,32 +6,52 @@ import {
 } from './styles';
 
 import api from '../../services/api';
+import Search from '../../components/Search';
 
 function CarModels({ match }) {
   const [years, setYears] = useState([]);
   const [models, setModels] = useState([]);
   const [modelSelected, setModelSelected] = useState(null);
+  const [searchModel, setSearchModel] = useState('');
   const brandId = match.params.id;
 
   useEffect(() => {
     async function LoadModels() {
       const response = await api.get(`marcas/${brandId}/modelos`);
-      const { modelos, anos } = response.data;
 
-      setModels(modelos);
-      setYears(anos);
+      const { modelos, anos } = response.data;
+      const carModelsFiltered = modelos.filter(
+        (carModel) => carModel.nome.toLowerCase().includes(searchModel),
+      );
+      const yearsFiltered = anos.filter(
+        (yearModel) => yearModel.nome.includes(searchModel),
+      );
+
+      setModels(carModelsFiltered);
+      setYears(yearsFiltered);
     }
 
     LoadModels();
-  }, [brandId]);
+  }, [brandId, searchModel]);
+
+  function handleSearch({ target }) {
+    setSearchModel(target.value);
+  }
 
   const handleModel = useCallback((model) => {
     setModelSelected(model);
+    setSearchModel('');
   }, []);
 
   return (
     <Container>
-      <h2>Modelos disponíveis</h2>
+      <Search
+        title={modelSelected ? 'Ano' : 'Modelo'}
+        placeholder={modelSelected ? 'Digite o ano' : 'Digite o modelo'}
+        id="Search"
+        value={searchModel}
+        onChange={handleSearch}
+      />
       <WrapperModelsCards selected={modelSelected}>
         {models.map((model) => (
           <ModelCard key={model.codigo} onClick={() => handleModel(model.codigo)}>
@@ -48,6 +68,7 @@ function CarModels({ match }) {
             href={
                `/car/${brandId}/${modelSelected}/${year.codigo}`
             }
+            onClick={() => setSearchModel('')}
           >
             <ModelCard key={year.codigo}>
               <div>
