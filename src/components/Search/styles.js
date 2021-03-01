@@ -52,6 +52,9 @@ export const Container = styled.header`
   }
 
   @media (max-width: 640px) {
+    display: flex;
+    flex-direction: column;
+
     h3 {
       display: none;
     }
