@@ -87,6 +87,9 @@ export const WrapperCard = styled.div`
    }
 
    button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
     border-radius: 50%;
     width: 40px;
