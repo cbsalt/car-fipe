@@ -1,4 +1,4 @@
-# <h1 align="center">Celebryts FIPE :oncoming_automobile: :mag:</h1>
+# <h1 align="center">Car FIPE :oncoming_automobile: :mag:</h1>
 ## Project description
 Find out how much your car or the car you would like to have is costing. This repository uses the updated FIPE table to consult vehicle prices according to the brand, model and year of the vehicle. You can bookmark it to keep up with changing prices.
 
