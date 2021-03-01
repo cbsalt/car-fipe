@@ -21,10 +21,10 @@ function CarModels({ match }) {
 
       const { modelos, anos } = response.data;
       const carModelsFiltered = modelos.filter(
-        (carModel) => carModel.nome.toLowerCase().includes(searchModel),
+        (carModel) => carModel.nome.toLowerCase().includes(searchModel.toLowerCase()),
       );
       const yearsFiltered = anos.filter(
-        (yearModel) => yearModel.nome.includes(searchModel),
+        (yearModel) => yearModel.nome.includes(searchModel.toLowerCase()),
       );
 
       setModels(carModelsFiltered);
