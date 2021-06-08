@@ -11,7 +11,7 @@ _This project was developed with the following technologies:_
 * [Styled-Components](https://styled-components.com/)
 * [Redux-Saga](https://redux-saga.js.org/)
 * [FIPE API](https://deividfortuna.github.io/fipe/)
-* [EditorConfig](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig) and [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)/[Prettier](https://prettier.io/)
+* [EditorConfig](https://editorconfig.org/) and [ESLint](https://eslint.org/)/[Prettier](https://prettier.io/)
 
 # :information_source: Getting Started
 ### Prerequisites
