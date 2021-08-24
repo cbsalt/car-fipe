@@ -1,20 +1,24 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
-
 import { TiTrash } from 'react-icons/ti';
 import { BsCalendar } from 'react-icons/bs';
 import { FaGasPump, FaMoneyBillWaveAlt } from 'react-icons/fa';
-import { Container, WrapperCard } from './styles';
+
 import Empty from '../../assets/images/empty.svg';
 
 import * as CartActions from '../../store/modules/cart/actions';
 
+import { Container, WrapperCard } from './styles';
+
 function FavoriteCars() {
-  const favorites = useSelector((state) => state.cart.favoriteCars.map((carDetail) => ({
-    ...carDetail,
-  })));
+  const favorites = useSelector(
+    (state) => state.cart.favoriteCars.map((carDetail) => ({
+      ...carDetail,
+    })),
+  );
 
   const dispatch = useDispatch();
 
@@ -54,7 +58,7 @@ function FavoriteCars() {
         <span>Parece que não há nada aqui ainda...</span>
         <img src={Empty} alt="empty" />
         <button type="button">
-          <a href="/">VOLTAR AO INÍCIO</a>
+          <Link to="/">VOLTAR AO INÍCIO</Link>
         </button>
       </div>
       )}

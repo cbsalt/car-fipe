@@ -27,6 +27,10 @@ export const WrapperModelsCards = styled.div`
   flex-direction: column;
 `;
 
+export const LoaderWrapper = styled.div`
+  margin: 0 auto;
+`;
+
 export const WrapperYearsCards = styled.div`
   margin-top: 32px;
   justify-items: center;

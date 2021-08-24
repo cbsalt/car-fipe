@@ -34,10 +34,14 @@ export const Container = styled.div`
 
   span {
     color: #483d8b;
-    position: absolute;
-    top: 8px;
-    left: 13px;
     font-size: 14px;
     font-weight: bold;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: 20%;
+    text-align: center;
   }
 `;

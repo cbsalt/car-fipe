@@ -1,14 +1,18 @@
 import React, { useEffect, useCallback, useState } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-
-import {
-  Container, WrapperModelsCards, WrapperYearsCards, ModelCard,
-} from './styles';
+import Loader from 'react-loader-spinner';
 
 import api from '../../services/api';
 import Search from '../../components/Search';
 
+import {
+  Container, WrapperModelsCards, WrapperYearsCards, ModelCard, LoaderWrapper,
+} from './styles';
+
 function CarModels({ match }) {
+  const [loading, setLoading] = useState(false);
+
   const [years, setYears] = useState([]);
   const [models, setModels] = useState([]);
   const [modelSelected, setModelSelected] = useState(null);
@@ -17,16 +21,20 @@ function CarModels({ match }) {
 
   useEffect(() => {
     async function LoadModels() {
+      setLoading(true);
       const response = await api.get(`marcas/${brandId}/modelos`);
 
       const { modelos, anos } = response.data;
       const carModelsFiltered = modelos.filter(
-        (carModel) => carModel.nome.toLowerCase().includes(searchModel.toLowerCase()),
+        (carModel) => carModel.nome
+          .toLowerCase()
+          .includes(searchModel.toLowerCase()),
       );
       const yearsFiltered = anos.filter(
         (yearModel) => yearModel.nome.includes(searchModel.toLowerCase()),
       );
 
+      setLoading(false);
       setModels(carModelsFiltered);
       setYears(yearsFiltered);
     }
@@ -53,8 +61,17 @@ function CarModels({ match }) {
         onChange={handleSearch}
       />
       <WrapperModelsCards selected={modelSelected}>
+        {loading && models.length < 1 && (
+          <LoaderWrapper>
+            <Loader type="ThreeDots" color="#483d8b" height={80} width={80} />
+          </LoaderWrapper>
+        )}
+
         {models.map((model) => (
-          <ModelCard key={model.codigo} onClick={() => handleModel(model.codigo)}>
+          <ModelCard
+            key={model.codigo}
+            onClick={() => handleModel(model.codigo)}
+          >
             <div>
               <strong>{model.nome}</strong>
             </div>
@@ -63,9 +80,9 @@ function CarModels({ match }) {
       </WrapperModelsCards>
       <WrapperYearsCards selected={modelSelected}>
         {years.map((year) => (
-          <a
+          <Link
             key={year.codigo}
-            href={
+            to={
                `/car/${brandId}/${modelSelected}/${year.codigo}`
             }
             onClick={() => setSearchModel('')}
@@ -75,7 +92,7 @@ function CarModels({ match }) {
                 <strong>{year.nome}</strong>
               </div>
             </ModelCard>
-          </a>
+          </Link>
         ))}
       </WrapperYearsCards>
     </Container>

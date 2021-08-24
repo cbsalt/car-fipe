@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import Loader from 'react-loader-spinner';
+import { Link } from 'react-router-dom';
 
 import Search from '../../components/Search';
 
@@ -9,9 +11,11 @@ import api from '../../services/api';
 function CarBrands() {
   const [brands, setBrands] = useState([]);
   const [searchBrand, setSearchBrand] = useState('');
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     async function LoadBrands() {
+      setLoading(true);
       const response = await api.get('marcas');
 
       const carBrands = response.data;
@@ -19,6 +23,7 @@ function CarBrands() {
         (carBrand) => carBrand.nome.toLowerCase().includes(searchBrand.toLowerCase()),
       );
 
+      setLoading(false);
       setBrands(carBrandsFiltered);
     }
 
@@ -39,16 +44,19 @@ function CarBrands() {
         onChange={handleSearch}
       />
       <WrapperCards className="animeLeft">
+        {loading && brands.length < 1 && (
+          <Loader type="ThreeDots" color="#483d8b" height={80} width={80} />
+        )}
         {brands.map((brand) => (
-          <a
+          <Link
             key={brand.codigo}
-            href={`/models/${brand.codigo}`}
+            to={`/models/${brand.codigo}`}
             onClick={() => setSearchBrand('')}
           >
             <BrandCard>
               <span>{brand.nome}</span>
             </BrandCard>
-          </a>
+          </Link>
         ))}
       </WrapperCards>
     </Container>

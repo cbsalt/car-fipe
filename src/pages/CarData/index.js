@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import Loader from 'react-loader-spinner';
@@ -9,12 +10,10 @@ import { BsCalendar } from 'react-icons/bs';
 import { FaGasPump, FaMoneyBillWaveAlt } from 'react-icons/fa';
 
 import api from '../../services/api';
+import notFound from '../../assets/images/not-found.svg';
+import * as CartActions from '../../store/modules/cart/actions';
 
 import { Container, WrapperCard } from './styles';
-
-import notFound from '../../assets/images/not-found.svg';
-
-import * as CartActions from '../../store/modules/cart/actions';
 
 function CarData({ match }) {
   const [carDetail, setCarDetail] = useState(false);
@@ -29,7 +28,9 @@ function CarData({ match }) {
       setLoading(true);
 
       try {
-        const response = await api.get(`marcas/${brandid}/modelos/${modelid}/anos/${year}`);
+        const response = await api.get(
+          `marcas/${brandid}/modelos/${modelid}/anos/${year}`,
+        );
 
         setCarDetail(response.data);
       } catch (err) {
@@ -70,7 +71,9 @@ function CarData({ match }) {
   return (
     <Container>
       <div>
-        {loading && <Loader type="ThreeDots" color="#483d8b" height={80} width={80} />}
+        {loading && (
+          <Loader type="ThreeDots" color="#483d8b" height={80} width={80} />
+        )}
 
         {error && (
         <div className="not-found">
@@ -83,7 +86,7 @@ function CarData({ match }) {
           </p>
           <img src={notFound} alt="404 not found" />
           <button type="button">
-            <a href="/">VOLTAR AO INÍCIO</a>
+            <Link to="/">VOLTAR AO INÍCIO</Link>
           </button>
         </div>
         )}

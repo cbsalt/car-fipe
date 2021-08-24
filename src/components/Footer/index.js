@@ -9,7 +9,14 @@ function Footer() {
         Made with
         <span role="img" aria-label="Heart"> 🖤 </span>
         by
-        <a href="https://github.com/cbsalt" target="_blank" rel="noopener noreferrer"> Charles</a>
+        <a
+          href="https://github.com/cbsalt"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {' '}
+          Charles
+        </a>
       </p>
 
     </Container>

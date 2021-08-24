@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { MdFavorite } from 'react-icons/md';
 
@@ -11,10 +12,10 @@ export default function Header() {
 
   return (
     <Container>
-      <a href="/">
+      <Link to="/">
         <img src={logo} alt="logotipo" />
-      </a>
-      <a href="/favorites">
+      </Link>
+      <Link to="/favorites">
         <div>
           <h3>
             FAVORITOS
@@ -26,7 +27,7 @@ export default function Header() {
             </span>
           </div>
         </div>
-      </a>
+      </Link>
     </Container>
   );
 }
